@@ -21,7 +21,8 @@ header{
     width: 150px;
     justify-content: center;
     align-items: center;
-    margin-top: 7px;
+    margin-bottom: 9px;
+    margin-top: -5px;
 }
 .logo img{
     width: 100%;
