@@ -1,12 +1,13 @@
 <?php
 ini_set('display_errors', 'On');
-require __DIR__ . '../php_util/db_conection';
+require __DIR__ . '/../php_util/db_connection.php';
 
 $mysqli = get_db_connection_or_die();
 
 $name = $_POST['nombre'];
 $email = $_POST['email'];
 $pass = $_POST['contrasenha'];
+
 
 try {
   $sql = "INSERT INTO tuser (email, nombre, encrypted_password) VALUES (?, ?, ?)";
@@ -24,4 +25,4 @@ try {
   exit();
 }
 
-header("Location: registro.php?success=True");
+header("Location: login.php");

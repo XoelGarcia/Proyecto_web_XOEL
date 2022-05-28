@@ -16,8 +16,7 @@
             <button class="btn-main btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
         <div class="options-place">
-            <div class="item-option"><a href="login.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></div>
-            <div class="item-option"><i class="fa fa-sign-in" aria-hidden="true"></i></div>
+            <div class="item-option"><a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i></a></div>
             <div class="item-option"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
         </div>
     </header>
