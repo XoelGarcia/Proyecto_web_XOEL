@@ -4,10 +4,6 @@
 
     session_start();
     $mysqli = get_db_connection_or_die();
-    $user_id = $_SESSION['user_id'];
-    if(empty($user_id)){
-        header('Location: error.php');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,17 +18,19 @@
 </head>
 <body>
     <header>
-        <div class="logo"><img src="/imagenes/logo_bitwear.png" alt=""></div>
+        <div class="logo"><img src="imagenes/logo_bitwear.png" alt=""></div>
         <div class="search">
             <input type="text" id="idbusqueda" placeholder="Buscador">
             <button class="btn-main btn-search"><i class="fa fa-search" aria-hidden="true"></i></button>
         </div>
         <div class="options-place">
-            <div class="item-option"><a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i></a></div>
-            <div class="item-option"><a href="vista.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></div>
+            <div class="item-option"><a href="login.php"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></div>
+            <div class="item-option"><i class="fa fa-sign-in" aria-hidden="true"></i></div>
+            <div class="item-option"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
         </div>
     </header>
-    <?php
+    <div class="container">
+        <?php
             echo '<br>';
             echo '<br>';
             echo '<br>';
@@ -46,13 +44,13 @@
                             <br>
                             <br> 
                             <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
-                            <a href="carrito.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
                         </div>
                         </div>';           
                 }
             #Cerramos la conexión
             mysqli_close($mysqli);
         ?>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </body>
