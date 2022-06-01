@@ -1,0 +1,35 @@
+#logo{
+    margin-top: auto;
+    margin-left: 2rem;
+}
+
+#iconos{
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+header .row{
+    background-color: gray;
+    padding: 1rem;
+    
+}
+
+/*Estilos botón comprar*/
+#enlace_compra{
+    background-color: #009a1f;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+#enlace_compra:hover{
+    background-color: #025e14;
+}
+
+#enlace_eliminar{
+    background-color: #a30000;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 4px;
+}
