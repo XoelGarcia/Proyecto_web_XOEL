@@ -24,7 +24,7 @@
             <div class="col text-end">
             <a href="login.php"><img src="imagenes/usuario.png" alt="LOGIN" width="50px" id="iconos"></a>
             <a href="logout.php"><img src="imagenes/logout.png" alt="LOGOUT" width="50px" id="iconos"></a>
-            <a href="carrito.php"><img src="imagenes/carrito.gif" alt="CARRITO" width="50px" id="iconos"></a>
+            <a href="carrito.php"><img src="imagenes/carrito.png" alt="CARRITO" width="50px" id="iconos"></a>
             </div>
         </div>
     </header>
@@ -50,31 +50,48 @@
     <!-- Productos -->
     <div class="container">
         <?php
+            // $a= 0;
+            // echo '<br>';
+            // echo '<br>';
+            // echo '<br>';
+            // echo '<br>';
+
+            // $id= 2;
+            // do {
+            //     $a=$a + 3;
+            //     $consulta = "SELECT ".$id.", nombre, imagen, precio FROM tproductos";
+            //     $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
+            //     echo '<div class="row">';
+            //     while ($row1 = mysqli_fetch_array($result1)) {
+            //         echo '
+            //         <div class="col" style="text-align:center">
+            //             <img src="' . $row1['imagen'] . '" alt="imagen"  id="producto" width="300px"/>';
+            //         echo '
+            //             <br>
+            //             <br> 
+            //             <p id="rareza">PRECIO: '. $row1['precio'] .' &#8364;</p>
+            //         </div>';
+            //         $b= $row1[$id];      
+            //             }
+            //         $id= $b;
+            //         echo '</div>'; 
+            // } while ($a <= 6);
+            // mysqli_close($mysqli);
             echo '<br>';
             echo '<br>';
             echo '<br>';
             echo '<br>';
                 $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
-                while ($row = mysqli_fetch_array($result1)) {
-                    $i=0;            
-                    echo '<div class="row">';
-                    #$consulta2 = "SELECT id, nombre, imagen, precio FROM tproductos";
-                    #$result2 = mysqli_query($mysqli, $consulta2) or die('Query Error');
-                    while ($row1 = mysqli_fetch_array($result1)) {            
-                        if($i==3){
-                            break;
-                        }else{
-                            echo '
-                                <div class="col" style="text-align:center">
-                                    <img src="' . $row1['imagen'] . '" alt="imagen"  id="producto" width="300px"/>
-                                    <br>
-                                    <br> 
-                                    <p id="rareza">PRECIO: '.$row1['precio'].' &#8364;</p>
-                                </div>';
-                            $i++;
-                        }       
-                    }          
+                while ($row = mysqli_fetch_array($result1)) {            
+                    echo '<div class="row">
+                        <div class="col" style="text-align:center">
+                            <img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/>
+                            <br>
+                            <br> 
+                            <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
+                        </div>
+                        </div>';           
                 }
             #Cerramos la conexión
             mysqli_close($mysqli);

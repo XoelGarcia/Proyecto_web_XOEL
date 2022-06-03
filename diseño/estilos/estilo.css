@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 #logo{
     margin-top: auto;
     margin-left: 2rem;
