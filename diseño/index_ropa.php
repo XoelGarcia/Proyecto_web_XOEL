@@ -48,11 +48,11 @@
         </button>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col"><a href="index.php">TODOS</a></div>
-            <div class="col"><a href="index_ropa.php">ROPA</a></div>
-            <div class="col"><a href="index_accesorios.php">ACCESORIOS</a></div>
+    <div class="container-fluid" id="contenedor_filtro">
+        <div class="row" id="barra">
+            <div class="col" id="letras"><a href="index.php" id="filtro">TODO</a></div>
+            <div class="col" id="letras"><a href="index_ropa.php" id="filtro">ROPA</a></div>
+            <div class="col" id="letras"><a href="index_accesorios.php" id="filtro">ACCESORIOS</a></div>
         </div>
     </div>
 

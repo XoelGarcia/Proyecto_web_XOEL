@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="estilos/estilo.css">
     <title>BitShop</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="container" id="contenedor_producto">
     <?php
             #Comprobamos que la sesión no está vacía
             if (empty($user_id)) {
@@ -51,11 +51,12 @@
                         #Mostramos los datos que queremos
                         echo '<div class="row">
                             <div class="col" style="text-align:center">
-                                <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen" id="carta" width="50%"/></a>
+                                <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen" id="imagen" width="75%"/></a>
                             </div> 
                             <div class="col">
-                                <p>PRECIO: '.$row['precio'].' &#8364;</p>
+                                <p id="precio">PRECIO: '.$row['precio'].' &#8364;</p>
                                 <br>
+                                <a href="eliminar.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
                                 <a href="eliminar.php?id='.$row['id'].'" id="enlace_eliminar">ELIMINAR</a>
                                 <br>
                                 <br>

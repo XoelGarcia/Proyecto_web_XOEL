@@ -4,6 +4,10 @@
 
     session_start();
     $mysqli = get_db_connection_or_die();
+    $user_id = $_SESSION['user_id'];
+    if(empty($user_id)){
+        header('Location: error.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,8 +15,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilos\estilo.css">
+    <link rel="stylesheet" href="../estilos/estilo.css">
     <title>BitShop</title>
 </head>
 <body>
@@ -22,7 +27,6 @@
             <img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo">
             </div>
             <div class="col text-end">
-            <a href="login.php"><img src="imagenes/usuario.png" alt="LOGIN" width="50px" id="iconos"></a>
             <a href="logout.php"><img src="imagenes/logout.png" alt="LOGOUT" width="50px" id="iconos"></a>
             <a href="carrito.php"><img src="imagenes/carrito.png" alt="CARRITO" width="50px" id="iconos"></a>
             </div>
@@ -50,42 +54,15 @@
 
     <div class="container-fluid" id="contenedor_filtro">
         <div class="row" id="barra">
-            <div class="col" id="letras"><a href="index.php" id="filtro">TODO</a></div>
-            <div class="col" id="letras"><a href="index_ropa.php" id="filtro">ROPA</a></div>
-            <div class="col" id="letras"><a href="index_accesorios.php" id="filtro">ACCESORIOS</a></div>
+            <div class="col" id="letras"><a href="sesion.php" id="filtro">TODO</a></div>
+            <div class="col" id="letras"><a href="sesion_ropa.php" id="filtro">ROPA</a></div>
+            <div class="col" id="letras"><a href="sesion_accesorios.php" id="filtro">ACCESORIOS</a></div>
         </div>
     </div>
 
     <!-- Productos -->
     <div class="container">
-        <?php
-            // $a= 0;
-            // echo '<br>';
-            // echo '<br>';
-            // echo '<br>';
-            // echo '<br>';
-
-            // do {
-            //     $a=$a + 3;
-            //     $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
-            //     $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
-            //     echo '<div class="row">';
-            //     while ($row1 = mysqli_fetch_array($result1)) {
-            //         echo '
-            //         <div class="col-md-3" style="text-align:center">
-            //             <img src="' . $row1['imagen'] . '" alt="imagen"  id="producto" width="300px"/>';
-            //         echo '
-            //             <br>
-            //             <br> 
-            //             <p id="rareza">PRECIO: '. $row1['precio'] .' &#8364;</p>
-            //         </div>';    
-            //             }
-            //         echo '</div>'; 
-            // } while ($a <= 6);
-            // mysqli_close($mysqli);
-
-
-
+    <?php
             echo '<br>';
             echo '<br>';
             echo '<br>';
@@ -94,17 +71,19 @@
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
-                    echo '<div class="col-md-4" style="text-align:center">
+                       echo '<div class="col-md-4" style="text-align:center">
                             <img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/>
                             <br>
                             <br> 
                             <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
+                            <a href="carrito.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
                         </div>';           
                 }
                 echo '</div>';
             #Cerramos la conexión
             mysqli_close($mysqli);
         ?>
+
     </div>
 
     <footer>
@@ -178,6 +157,7 @@
             </div>
         
     </footer>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>

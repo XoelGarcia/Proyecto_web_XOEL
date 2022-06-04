@@ -50,9 +50,9 @@
 
     <div class="container-fluid" id="contenedor_filtro">
         <div class="row" id="barra">
-            <div class="col"><a href="index.php" id="filtro">TODOS</a></div>
-            <div class="col"><a href="index_ropa.php" id="filtro">ROPA</a></div>
-            <div class="col"><a href="index_accesorios.php" id="filtro">ACCESORIOS</a></div>
+            <div class="col" id="letras"><a href="index.php" id="filtro">TODO</a></div>
+            <div class="col" id="letras"><a href="index_ropa.php" id="filtro">ROPA</a></div>
+            <div class="col" id="letras"><a href="index_accesorios.php" id="filtro">ACCESORIOS</a></div>
         </div>
     </div>
 
@@ -94,11 +94,11 @@
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
-                    echo '<div class="col-md-4" style="text-align:center">
+                    echo '<div class="col-md-4" style="text-align:center" id="parrilla">
                             <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
                             <br>
                             <br> 
-                            <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
+                            <p>PRECIO: '.$row['precio'].' &#8364;</p>
                         </div>';           
                 }
                 echo '</div>';

@@ -31,7 +31,7 @@
     </header>
 
     <!-- Producto -->
-    <div class="container">
+    <div class="container" id="contenedor_producto">
         <?php
             echo '<br>';
             echo '<br>';
@@ -43,9 +43,9 @@
                 #Recorremos $result1, almacenando los datos en un array
                 while ($row = mysqli_fetch_array($result1)) {
                     #Mostramos los datos que queremos
-                    echo '<div class="row" id="carta_unic">
+                    echo '<div class="row">
                             <div class="col">
-                                <img src="' . $row['imagen'] . '" alt="imagen" width=90% id="imagen"/>
+                                <img src="' . $row['imagen'] . '" alt="imagen" width=75% id="imagen"/>
                             </div>
                             <div class="col" id="columna">
                                 <br>
@@ -53,8 +53,6 @@
                                 <br>
                                 <p id="descripcion">'.$row['descripcion'].'</p>
                                 <br>
-                                <a href="eliminar.php?id='.$id.'" id="enlace_eliminar">ELIMINAR</a>
-                               
                             </div>
                         </div>';                               
                 }

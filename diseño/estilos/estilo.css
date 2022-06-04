@@ -17,11 +17,20 @@ header .row{
     padding: 1rem;
 }
 
+
+#parrilla{
+    margin-bottom: 45px;
+}
+
+
+
+
 /*Estilos filtro*/
 
 #contenedor_filtro{
     background-color: black;
     width: 100%;
+    height: 100px;
 }
 
 #barra{
@@ -31,7 +40,14 @@ header .row{
 #filtro{
     text-decoration: none;
     color: white;
+    font-size: 25px;
 }
+
+#letras{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 
 /*Estilos footer*/
 footer{
@@ -162,4 +178,36 @@ footer{
     padding: 15px 25px;
     text-decoration: none;
     border-radius: 4px;
+}
+
+
+/*Estilos producto*/
+ 
+#imagen{
+    margin-bottom: 75px;
+}
+
+
+#precio{
+    font-size: 20px; 
+    color: white;
+}
+
+#descripcion{
+    font-size: 10px;
+    color: white;
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 20px;
+    text-align: justify;
+
+}
+
+#contenedor_producto{
+    background-color: rgba(128, 128, 128, 0.193);
+    margin-top: 200px;
+    margin-bottom: 100px;
+    width: 50%;
+    border-radius: 15px;
+    text-align: center;
 }
