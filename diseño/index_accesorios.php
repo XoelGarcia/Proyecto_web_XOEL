@@ -32,10 +32,10 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="imagenes/bitcoin_carousel.jpg" class="d-block w-100" alt="...">
+            <img src="imagenes/carousel_envios.PNG" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="imagenes/bitcoin_carousel.jpg" class="d-block w-100" alt="...">
+            <img src="imagenes/carousel_rebajas.PNG" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -90,15 +90,15 @@
             echo '<br>';
             echo '<br>';
             echo '<br>';
-                $consulta = "SELECT id, nombre, imagen, precio FROM tproductos WHERE id_categoria=2";
+                $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
-                    echo '<div class="col-md-4" style="text-align:center">
-                            <img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/>
+                    echo '<div class="col-md-4" style="text-align:center" id="parrilla">
+                            <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
                             <br>
                             <br> 
-                            <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
+                            <p>PRECIO: '.$row['precio'].' &#8364;</p>
                         </div>';           
                 }
                 echo '</div>';

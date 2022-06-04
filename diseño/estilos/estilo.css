@@ -190,12 +190,16 @@ footer{
 
 #precio{
     font-size: 20px; 
-    color: white;
+    color: black;
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 20px;
+    text-align: justify;
 }
 
 #descripcion{
     font-size: 10px;
-    color: white;
+    color: black;
     margin-right: 30px;
     margin-left: 30px;
     font-size: 20px;
