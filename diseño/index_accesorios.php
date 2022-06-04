@@ -4,10 +4,6 @@
 
     session_start();
     $mysqli = get_db_connection_or_die();
-    $user_id = $_SESSION['user_id'];
-    if(empty($user_id)){
-        header('Location: error.php');
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +11,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="estilos\estilo.css">
     <title>BitShop</title>
 </head>
 <body>
@@ -27,48 +22,90 @@
             <img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo">
             </div>
             <div class="col text-end">
+            <a href="login.php"><img src="imagenes/usuario.png" alt="LOGIN" width="50px" id="iconos"></a>
             <a href="logout.php"><img src="imagenes/logout.png" alt="LOGOUT" width="50px" id="iconos"></a>
             <a href="carrito.php"><img src="imagenes/carrito.png" alt="CARRITO" width="50px" id="iconos"></a>
             </div>
         </div>
     </header>
+    <!-- corousel -->
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+            <img src="imagenes/bitcoin_carousel.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="imagenes/bitcoin_carousel.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
     <div class="container">
-    <?php
-            #Comprobamos que la sesión no está vacía
-            if (empty($user_id)) {
-                header('Location: error.php?mensaje=Error');
-            } else {
-                echo '<br>';
-                echo '<br>';
-                echo '<br>';
-                echo '<br>';
-                    #Creamos una variable que nos almacene toda la información de las cartas de ese usuario
-                    $sql = 'SELECT tproductos.id, tproductos.nombre, tproductos.imagen, tproductos.precio, tcarrito.id_user FROM tproductos INNER JOIN tcarrito ON tproductos.id = tcarrito.id_producto WHERE tcarrito.id_user ='.$user_id.' ORDER BY tcarrito.id_producto';
-                    $result1 = mysqli_query($mysqli, $sql) or die('Query Error');
-                    #Recorremos $result1, almacenando los datos en un array
-                    while ($row = mysqli_fetch_array($result1)) {
-                        #Mostramos los datos que queremos
-                        echo '<div class="row">
-                            <div class="col" style="text-align:center">
-                                <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen" id="carta" width="50%"/></a>
-                            </div> 
-                            <div class="col">
-                                <p>PRECIO: '.$row['precio'].' &#8364;</p>
-                                <br>
-                                <a href="eliminar.php?id='.$row['id'].'" id="enlace_eliminar">ELIMINAR</a>
-                                <br>
-                                <br>
-                                <br>
-                                </div>
-                            
-                        </div>';                       
-                    }
-                #Cerramos la conexión
-                mysqli_close($mysqli);
-            }
-        ?>
+        <div class="row">
+            <div class="col"><a href="index.php">TODOS</a></div>
+            <div class="col"><a href="index_ropa.php">ROPA</a></div>
+            <div class="col"><a href="index_accesorios.php">ACCESORIOS</a></div>
         </div>
+    </div>
+
+    <!-- Productos -->
+    <div class="container">
+        <?php
+            // $a= 0;
+            // echo '<br>';
+            // echo '<br>';
+            // echo '<br>';
+            // echo '<br>';
+
+            // do {
+            //     $a=$a + 3;
+            //     $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
+            //     $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
+            //     echo '<div class="row">';
+            //     while ($row1 = mysqli_fetch_array($result1)) {
+            //         echo '
+            //         <div class="col-md-3" style="text-align:center">
+            //             <img src="' . $row1['imagen'] . '" alt="imagen"  id="producto" width="300px"/>';
+            //         echo '
+            //             <br>
+            //             <br> 
+            //             <p id="rareza">PRECIO: '. $row1['precio'] .' &#8364;</p>
+            //         </div>';    
+            //             }
+            //         echo '</div>'; 
+            // } while ($a <= 6);
+            // mysqli_close($mysqli);
+
+
+
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+                $consulta = "SELECT id, nombre, imagen, precio FROM tproductos WHERE id_categoria=2";
+                $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
+                echo '<div class="row">';
+                while ($row = mysqli_fetch_array($result1)) {            
+                    echo '<div class="col-md-4" style="text-align:center">
+                            <img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/>
+                            <br>
+                            <br> 
+                            <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
+                        </div>';           
+                }
+                echo '</div>';
+            #Cerramos la conexión
+            mysqli_close($mysqli);
+        ?>
+    </div>
 
     <footer>
        

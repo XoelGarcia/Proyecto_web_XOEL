@@ -4,10 +4,7 @@
 
     session_start();
     $mysqli = get_db_connection_or_die();
-    $user_id = $_SESSION['user_id'];
-    if(empty($user_id)){
-        header('Location: error.php');
-    }
+    $id=$_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +12,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="estilos\estilo.css">
     <title>BitShop</title>
 </head>
 <body>
@@ -27,48 +23,46 @@
             <img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo">
             </div>
             <div class="col text-end">
+            <a href="login.php"><img src="imagenes/usuario.png" alt="LOGIN" width="50px" id="iconos"></a>
             <a href="logout.php"><img src="imagenes/logout.png" alt="LOGOUT" width="50px" id="iconos"></a>
             <a href="carrito.php"><img src="imagenes/carrito.png" alt="CARRITO" width="50px" id="iconos"></a>
             </div>
         </div>
     </header>
 
+    <!-- Producto -->
     <div class="container">
-    <?php
-            #Comprobamos que la sesión no está vacía
-            if (empty($user_id)) {
-                header('Location: error.php?mensaje=Error');
-            } else {
-                echo '<br>';
-                echo '<br>';
-                echo '<br>';
-                echo '<br>';
-                    #Creamos una variable que nos almacene toda la información de las cartas de ese usuario
-                    $sql = 'SELECT tproductos.id, tproductos.nombre, tproductos.imagen, tproductos.precio, tcarrito.id_user FROM tproductos INNER JOIN tcarrito ON tproductos.id = tcarrito.id_producto WHERE tcarrito.id_user ='.$user_id.' ORDER BY tcarrito.id_producto';
-                    $result1 = mysqli_query($mysqli, $sql) or die('Query Error');
-                    #Recorremos $result1, almacenando los datos en un array
-                    while ($row = mysqli_fetch_array($result1)) {
-                        #Mostramos los datos que queremos
-                        echo '<div class="row">
-                            <div class="col" style="text-align:center">
-                                <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen" id="carta" width="50%"/></a>
-                            </div> 
+        <?php
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+                #Creamos una variable que nos almacene toda la información de las cartas de ese usuario
+                $sql = 'SELECT nombre, imagen, precio, id, descripcion FROM tproductos WHERE id='.$id;
+                $result1 = mysqli_query($mysqli, $sql) or die('Query Error');
+                #Recorremos $result1, almacenando los datos en un array
+                while ($row = mysqli_fetch_array($result1)) {
+                    #Mostramos los datos que queremos
+                    echo '<div class="row" id="carta_unic">
                             <div class="col">
-                                <p>PRECIO: '.$row['precio'].' &#8364;</p>
+                                <img src="' . $row['imagen'] . '" alt="imagen" width=90% id="imagen"/>
+                            </div>
+                            <div class="col" id="columna">
                                 <br>
-                                <a href="eliminar.php?id='.$row['id'].'" id="enlace_eliminar">ELIMINAR</a>
+                                <p id="precio">PRECIO: '.$row['precio'].' <img src="imagenes/logo_bitcoin.png" alt="img" width=20px/></p>
                                 <br>
+                                <p id="descripcion">'.$row['descripcion'].'</p>
                                 <br>
-                                <br>
-                                </div>
-                            
-                        </div>';                       
-                    }
-                #Cerramos la conexión
-                mysqli_close($mysqli);
-            }
+                                <a href="eliminar.php?id='.$id.'" id="enlace_eliminar">ELIMINAR</a>
+                               
+                            </div>
+                        </div>';                               
+                }
+
+            #Cerramos la conexión
+            mysqli_close($mysqli);
         ?>
-        </div>
+    </div>
 
     <footer>
        

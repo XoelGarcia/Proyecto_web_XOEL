@@ -17,6 +17,21 @@ header .row{
     padding: 1rem;
 }
 
+/*Estilos filtro*/
+
+#contenedor_filtro{
+    background-color: black;
+    width: 100%;
+}
+
+#barra{
+    text-align: center;
+}
+
+#filtro{
+    text-decoration: none;
+    color: white;
+}
 
 /*Estilos footer*/
 footer{

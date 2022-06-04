@@ -21,7 +21,7 @@
     <title>BitShop</title>
 </head>
 <body>
-<header>
+    <header>
         <div class="row fixed-top">
             <div class="col">
             <img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo">
@@ -51,6 +51,15 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+
+    <div class="container-fluid" id="contenedor_filtro">
+        <div class="row" id="barra">
+            <div class="col"><a href="index.php" id="filtro">TODOS</a></div>
+            <div class="col"><a href="index_ropa.php" id="filtro">ROPA</a></div>
+            <div class="col"><a href="index_accesorios.php" id="filtro">ACCESORIOS</a></div>
+        </div>
+    </div>
+
     <!-- Productos -->
     <div class="container">
     <?php
@@ -60,17 +69,17 @@
             echo '<br>';
                 $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
+                echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
-                    echo '<div class="row">
-                        <div class="col" style="text-align:center">
+                       echo '<div class="col-md-4" style="text-align:center">
                             <img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/>
                             <br>
                             <br> 
                             <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
                             <a href="carrito.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
-                        </div>
                         </div>';           
                 }
+                echo '</div>';
             #Cerramos la conexión
             mysqli_close($mysqli);
         ?>
