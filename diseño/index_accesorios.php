@@ -59,38 +59,11 @@
     <!-- Productos -->
     <div class="container">
         <?php
-            // $a= 0;
-            // echo '<br>';
-            // echo '<br>';
-            // echo '<br>';
-            // echo '<br>';
-
-            // do {
-            //     $a=$a + 3;
-            //     $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
-            //     $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
-            //     echo '<div class="row">';
-            //     while ($row1 = mysqli_fetch_array($result1)) {
-            //         echo '
-            //         <div class="col-md-3" style="text-align:center">
-            //             <img src="' . $row1['imagen'] . '" alt="imagen"  id="producto" width="300px"/>';
-            //         echo '
-            //             <br>
-            //             <br> 
-            //             <p id="rareza">PRECIO: '. $row1['precio'] .' &#8364;</p>
-            //         </div>';    
-            //             }
-            //         echo '</div>'; 
-            // } while ($a <= 6);
-            // mysqli_close($mysqli);
-
-
-
             echo '<br>';
             echo '<br>';
             echo '<br>';
             echo '<br>';
-                $consulta = "SELECT id, nombre, imagen, precio FROM tproductos";
+                $consulta = "SELECT id, nombre, imagen, precio FROM tproductos WHERE id_categoria=2";
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
@@ -98,7 +71,7 @@
                             <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
                             <br>
                             <br> 
-                            <p>PRECIO: '.$row['precio'].' &#8364;</p>
+                            <p>PRECIO: '.$row['precio'].' BTC</p>
                         </div>';           
                 }
                 echo '</div>';

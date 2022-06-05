@@ -35,7 +35,6 @@
 
     <div class="container" id="contenedor_producto">
     <?php
-            #Comprobamos que la sesión no está vacía
             if (empty($user_id)) {
                 header('Location: error.php?mensaje=Error');
             } else {
@@ -43,23 +42,21 @@
                 echo '<br>';
                 echo '<br>';
                 echo '<br>';
-                    #Creamos una variable que nos almacene toda la información de las cartas de ese usuario
-                    $sql = 'SELECT tproductos.id, tproductos.nombre, tproductos.imagen, tproductos.precio, tcarrito.id_user FROM tproductos INNER JOIN tcarrito ON tproductos.id = tcarrito.id_producto WHERE tcarrito.id_user ='.$user_id.' ORDER BY tcarrito.id_producto';
+                    $sql = 'SELECT tproductos.id, tproductos.nombre, tproductos.descripcion, tproductos.imagen, tproductos.precio, tcarrito.id_user FROM tproductos INNER JOIN tcarrito ON tproductos.id = tcarrito.id_producto WHERE tcarrito.id_user ='.$user_id.' ORDER BY tcarrito.id_producto';
                     $result1 = mysqli_query($mysqli, $sql) or die('Query Error');
-                    #Recorremos $result1, almacenando los datos en un array
                     while ($row = mysqli_fetch_array($result1)) {
-                        #Mostramos los datos que queremos
                         echo '<div class="row">
                             <div class="col" style="text-align:center">
                                 <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen" id="imagen" width="75%"/></a>
                             </div> 
                             <div class="col">
-                                <p id="precio">PRECIO: '.$row['precio'].' &#8364;</p>
+                                <p id="nombre">'.$row['nombre'].'</p>
+                                <br>
+                                <p id="precio">Precio: '.$row['precio'].' BTC </p>
+                                <p id="descripcion">'.$row['descripcion'].'</p>
                                 <br>
                                 <a href="eliminar.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
                                 <a href="eliminar.php?id='.$row['id'].'" id="enlace_eliminar">ELIMINAR</a>
-                                <br>
-                                <br>
                                 <br>
                                 </div>
                             

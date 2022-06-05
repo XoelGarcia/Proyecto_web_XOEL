@@ -71,11 +71,11 @@
                 $result1 = mysqli_query($mysqli, $consulta) or die('Query Error');
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
-                       echo '<div class="col-md-4" style="text-align:center">
-                            <img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/>
+                       echo '<div class="col-md-4" style="text-align:center" id="parrilla">
+                            <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
                             <br>
                             <br> 
-                            <p id="rareza">PRECIO: '.$row['precio'].' &#8364;</p>
+                            <p>PRECIO: '.$row['precio'].' BTC </p>
                             <a href="carrito.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
                         </div>';           
                 }

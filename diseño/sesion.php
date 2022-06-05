@@ -72,10 +72,10 @@
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
                        echo '<div class="col-md-4" style="text-align:center" id="parrilla">
-                       <a href="producto_sesion.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
+                            <a href="producto_sesion.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
                             <br>
                             <br> 
-                            <p>PRECIO: '.$row['precio'].' &#8364;</p>
+                            <p>PRECIO: '.$row['precio'].' BTC </p>
                             <a href="carrito.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>
                         </div>';           
                 }

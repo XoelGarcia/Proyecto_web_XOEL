@@ -40,10 +40,8 @@
             echo '<br>';
             echo '<br>';
             echo '<br>';
-                #Creamos una variable que nos almacene toda la información de las cartas de ese usuario
                 $sql = 'SELECT nombre, imagen, precio, id, descripcion FROM tproductos WHERE id='.$id;
                 $result1 = mysqli_query($mysqli, $sql) or die('Query Error');
-                #Recorremos $result1, almacenando los datos en un array
                 while ($row = mysqli_fetch_array($result1)) {
                     #Mostramos los datos que queremos
                     echo '<div class="row">
@@ -51,9 +49,9 @@
                                 <img src="' . $row['imagen'] . '" alt="imagen" width=75% id="imagen"/>
                             </div>
                             <div class="col" id="columna">
+                                <p id="nombre">'.$row['nombre'].'</p>
                                 <br>
-                                <p id="precio">PRECIO: '.$row['precio'].' <img src="imagenes/logo_bitcoin.png" alt="img" width=20px/></p>
-                                <br>
+                                <p id="precio">Precio: '.$row['precio'].' BTC</p>
                                 <p id="descripcion">'.$row['descripcion'].'</p>
                                 <br>
                                 <a href="carrito.php?id='.$row['id'].'" id="enlace_compra">COMPRAR</a>

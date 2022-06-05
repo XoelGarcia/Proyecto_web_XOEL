@@ -21,15 +21,15 @@
                 <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                   <p class="lead fw-normal mb-0 me-3">Sign in with</p>
                   <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
+                    <img src="icon/facebook.png" alt="" width="30px">
                   </button>
       
                   <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
+                  <img src="icon/instagram.png" alt="" width="30px">
                   </button>
       
                   <button type="button" class="btn btn-primary btn-floating mx-1">
-                    <i class="fab fa-linkedin-in"></i>
+                  <img src="icon/twitter.png" alt="" width="30px">
                   </button>
                 </div>
       
