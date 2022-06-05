@@ -72,7 +72,7 @@
                 echo '<div class="row">';
                 while ($row = mysqli_fetch_array($result1)) {            
                        echo '<div class="col-md-4" style="text-align:center" id="parrilla">
-                            <a href="producto.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
+                            <a href="producto_sesion.php?id='.$row['id'].'"><img src="' . $row['imagen'] . '" alt="imagen"  id="producto" width="50%"/></a>
                             <br>
                             <br> 
                             <p>PRECIO: '.$row['precio'].' BTC</p>
