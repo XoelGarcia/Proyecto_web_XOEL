@@ -1,5 +1,9 @@
 # BitWear
 
+Tienda online creada por Xoel García Tarrío, esta web consiste en venta de productos y pagos online con criptomonedas.
+
+
+
 Para probar el proyecto se deben seguir estos pasos:
 
 1º Descargar XAMPP
