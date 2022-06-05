@@ -20,7 +20,7 @@
     <header>
         <div class="row fixed-top">
             <div class="col">
-            <img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo">
+            <a href="index.php"><img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo"></a>
             </div>
             <div class="col text-end">
             <a href="login.php"><img src="imagenes/usuario.png" alt="LOGIN" width="50px" id="iconos"></a>

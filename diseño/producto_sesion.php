@@ -21,7 +21,7 @@
     <header>
         <div class="row fixed-top">
             <div class="col">
-            <img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo">
+            <a href="sesion.php"><img src="imagenes/logo_bitwear.png" alt="" width="300px" id="logo"></a>
             </div>
             <div class="col text-end">
             <a href="logout.php"><img src="imagenes/logout.png" alt="LOGOUT" width="50px" id="iconos"></a>
